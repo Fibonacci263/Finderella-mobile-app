@@ -12,8 +12,8 @@ import {
 
 import { useNavigation } from '@react-navigation/native';
 
-import ReportLost from '../screens/ReportLost'
-import ReportFound from '../screens/ReportFound'
+import LostItemForm from '../screens/ReportLost'
+import FoundForm from '../screens/ReportFound'
 
 const Home = ({ navigation }) => {
   const [items, setItems] = useState([]);
@@ -25,7 +25,7 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch('http://192.168.234.45:5000/api/items');
+        const response = await fetch('http://localhost:5000/api/items');
         if (!response.ok) throw new Error('Failed to fetch items');
 
         const data = await response.json();
@@ -87,12 +87,12 @@ const Home = ({ navigation }) => {
         <Button
           title="Report Lost Item"
           color="#007bff"
-          onPress={() => navigation.navigate("ReportLost")}
+          onPress={() => navigation.navigate("LostItemForm")}
         />
         <Button
           title="Report Found Item"
           color="#28a745"
-          onPress={() => navigation.navigate("ReportFound")}
+          onPress={() => navigation.navigate("FoundForm")}
         />
       </View>
 

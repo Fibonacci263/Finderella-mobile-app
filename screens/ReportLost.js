@@ -100,7 +100,7 @@ const LostItemForm = () => {
     }
 
     try {
-      const response = await fetch("http:192.168.234.45:5000/api/lost", {
+      const response = await fetch("http://localhost:5000/api/lost", {
         method: "POST",
         body: formData,
         headers: {

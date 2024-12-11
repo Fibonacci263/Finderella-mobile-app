@@ -89,7 +89,7 @@ const FoundForm = () => {
     }
 
     try {
-      const response = await fetch("http:192.168.234.45:5000/api/found", {
+      const response = await fetch("http://localhost:5000/api/found", {
         method: "POST",
         body: formData,
         headers: {
