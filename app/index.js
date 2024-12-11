@@ -4,22 +4,17 @@ import {
   Text,
   TextInput,
   FlatList,
-  TouchableOpacity,
-  Image,
+  Button,
   StyleSheet,
   ActivityIndicator,
   Alert,
 } from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
+import ReportLost from '../screens/ReportLost'
+import ReportFound from '../screens/ReportFound'
 
-
-import ReportLost from '../screens/ReportLost';
-import ReportFound from '../screens/ReportFound';
-
-
-// Home Component
 const Home = ({ navigation }) => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
@@ -30,7 +25,7 @@ const Home = ({ navigation }) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/items');
+        const response = await fetch('http://192.168.234.45:5000/api/items');
         if (!response.ok) throw new Error('Failed to fetch items');
 
         const data = await response.json();
@@ -65,8 +60,6 @@ const Home = ({ navigation }) => {
   // Render item card
   const renderItem = ({ item }) => (
     <View style={styles.card}>
-      
-      
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.description}>{item.description}</Text>
       <Text style={styles.details}>
@@ -85,39 +78,39 @@ const Home = ({ navigation }) => {
     </View>
   );
 
-  // Navigate to the report options
-  const handleMenu = () => {
-    Alert.alert(
-      'Report',
-      'What would you like to report?',
-      [
-        { text: 'Lost Item', onPress: () => navigation.navigate(ReportLost) },
-        { text: 'Found Item', onPress: () => navigation.navigate(ReportFound) },
-        { text: 'Cancel', style: 'cancel' },
-      ],
-      { cancelable: true }
-    );
-  };
-
   if (loading) return <ActivityIndicator size="large" style={styles.loader} />;
 
   return (
     <View style={styles.container}>
+      {/* Navigation Buttons */}
+      <View style={styles.navButtons}>
+        <Button
+          title="Report Lost Item"
+          color="#007bff"
+          onPress={() => navigation.navigate("ReportLost")}
+        />
+        <Button
+          title="Report Found Item"
+          color="#28a745"
+          onPress={() => navigation.navigate("ReportFound")}
+        />
+      </View>
+
+      {/* Search Bar */}
       <TextInput
         style={styles.searchInput}
         placeholder="Search items..."
         value={searchQuery}
         onChangeText={handleSearch}
       />
+
+      {/* Items List */}
       <FlatList
         data={filteredItems}
         keyExtractor={(item) => item._id}
         renderItem={renderItem}
         ListEmptyComponent={<Text style={styles.noItems}>No items found</Text>}
       />
-      <TouchableOpacity style={styles.fab} onPress={handleMenu}>
-        <Text style={styles.fabText}>+</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -126,7 +119,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 15,
-    backgroundColor: '#f4f4f9', // Light background for better contrast
+    backgroundColor: '#f4f4f9',
+  },
+  navButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 15,
   },
   searchInput: {
     borderWidth: 1,
@@ -134,14 +132,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 12,
     marginBottom: 15,
-    backgroundColor: '#fff', // White background for search input
+    backgroundColor: '#fff',
     fontSize: 16,
-    color: '#333', // Darker text for better readability
+    color: '#333',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 5,
-    elevation: 3, // For Android shadow effect
+    elevation: 3,
   },
   card: {
     borderWidth: 1,
@@ -149,31 +147,24 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 15,
     marginBottom: 15,
-    backgroundColor: '#fff', // White background for cards
+    backgroundColor: '#fff',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 6,
-    elevation: 3, // Android shadow effect
-  },
-  image: {
-    width: '100%',
-    height: 200,
-    borderRadius: 12,
-    marginBottom: 12,
-    resizeMode: 'cover', // Ensures images are properly scaled
+    elevation: 3,
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#333', // Darker text for a more professional feel
+    color: '#333',
     marginBottom: 5,
   },
   description: {
     fontSize: 14,
-    color: '#555', // Subtle text color for descriptions
+    color: '#555',
     marginVertical: 5,
-    lineHeight: 20, // Adds spacing between lines for better readability
+    lineHeight: 20,
   },
   details: {
     fontSize: 13,
@@ -186,34 +177,13 @@ const styles = StyleSheet.create({
   noItems: {
     textAlign: 'center',
     fontSize: 16,
-    color: '#aaa', // Softer color for the 'no items' text
-    fontStyle: 'italic', // Adds a professional touch
+    color: '#aaa',
+    fontStyle: 'italic',
   },
   loader: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  fab: {
-    position: 'absolute',
-    bottom: 25,
-    right: 25,
-    backgroundColor: '#007bff', // Strong, vibrant color for the FAB
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 5,
-  },
-  fabText: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
   },
 });
 
