@@ -1,0 +1,102 @@
+[{
+  "_id": {
+    "$oid": "674ce0332bf17bc6079f3fd9"
+  },
+  "title": "ros 2 nav robo car",
+  "description": "Ros 2 nav robo car",
+  "category": "Electronics",
+  "location": "Diamond Lecture",
+  "email": "leetlord263@gmail.com",
+  "phone": "07899098756",
+  "status": "lost",
+  "imagePath": "/uploads/1733091379202-IMG_20240504_205327_050.jpg",
+  "date": {
+    "$date": "2024-12-01T22:16:19.291Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674ce60efbd61f51edf1d8d7"
+  },
+  "title": "F1 helmet",
+  "description": "F1 helmet Ferrari ",
+  "category": "Clothing",
+  "location": "Nc5",
+  "email": "leetlord@gmail.com",
+  "phone": "07899098756",
+  "status": "found",
+  "imagePath": "/uploads/1733092878117-IMG_20240611_154639_615.jpg",
+  "date": {
+    "$date": "2024-12-01T22:41:18.138Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674ce685fbd61f51edf1d8db"
+  },
+  "title": "Cycle",
+  "description": "Blue adult cylce Kona brand",
+  "category": "Others",
+  "location": "Nc5",
+  "email": "leetlord263@gmail.com",
+  "phone": "07899098756",
+  "status": "Found",
+  "imagePath": "/uploads/1733092997375-bicycle.jpeg",
+  "date": {
+    "$date": "2024-12-01T22:43:17.379Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "674d833b91b2d1decd2b6f6f"
+  },
+  "title": "Wallet",
+  "description": "Brown wallet ",
+  "category": "Others",
+  "location": "NC3",
+  "email": "kabudurajonathan@gmail.com",
+  "phone": "07899098756",
+  "status": "Found",
+  "imagePath": "/uploads/1733133115427-IMG_20240328_070133_167.jpg",
+  "date": {
+    "$date": "2024-12-02T09:51:55.486Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67521a5f337e4e948c1159b4"
+  },
+  "title": "RDND watch ",
+  "description": "rdnd watch blue coloured custom edition",
+  "category": "Electronics",
+  "location": "Library",
+  "email": "chimberengwatestimony@outlook.com",
+  "phone": "0785675435",
+  "status": "found",
+  "imagePath": "/uploads/1733433951111-rdnd_.jpg",
+  "date": {
+    "$date": "2024-12-05T21:25:51.193Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6752b55facc813bcb0891537"
+  },
+  "title": "TEXTBOOK",
+  "description": "a5 TEXTBOOK OF OOP IN JAVA",
+  "category": "Documents",
+  "location": "NC3",
+  "email": "chimberengwatestimony@outlook.com",
+  "phone": "07899098756r6f",
+  "status": "lost",
+  "imagePath": "/uploads/1733473631590-uz logo.png",
+  "date": {
+    "$date": "2024-12-06T08:27:11.711Z"
+  },
+  "__v": 0
+}]
